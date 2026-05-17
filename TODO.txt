@@ -1,0 +1,29 @@
+
+
+1.project setup
+npm init --y
+
+2. app.js
+
+3. packages 
+  -cors
+  -bcrypyjs
+  -amqlib (RabbitMQ)
+  -express
+  -express-fileupload
+  -express-rate-limit
+  -express-validator
+  -helmet
+  -hpp
+  -jsonwebtoken
+  -mongoose
+  -nodemailer
+  -pino
+
+4. file folder structure
+
+5. config
+
+6. route file
+
+7. app.js formatting
