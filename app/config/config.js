@@ -17,7 +17,6 @@ export const REQUEST_LIMIT_TIME = 15 * 60 * 1000; // 15 minutes
 export const REQUEST_LIMIT_NUMBER = 3000; // Limit each IP to 3000 requests per windowMs
 
 export const WEB_CACHE = false;
-export const PORT = 3000;
 
 
 export const OTP_EXPIRATION_TIME = 5 * 60 * 1000; // 5 minutes

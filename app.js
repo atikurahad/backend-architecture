@@ -32,7 +32,6 @@ app.use(cors());
 app.use(helmet());
 app.use(hpp());
 app.use(morgan('dev'));
-app.use(fileUpload());
 app.use(express.json({ limit: MAX_JSON_SIZE }));
 app.use(express.urlencoded({ extended: URL_ENCODED }));
 app.use(
@@ -41,10 +40,7 @@ app.use(
         abortOnLimit: true,
         useTempFiles: false,
     })
-)
-
-app.use(express.json({ limit: MAX_JSON_SIZE }));
-app.use(express.urlencoded({ extended: URL_ENCODED }));
+);
 
 const limiter = rateLimit({
     windowMs: REQUEST_LIMIT_TIME,
@@ -70,18 +66,12 @@ app.use('/uploads', express.static(path.join(__rootDir, 'IMAGE_STORAGE_PATH')));
 
 app.use('/api', router);
 
-// Start the server
-app.listen(PORT, () => {
- console.log(`Server is running on port ${PORT}`);
+// Error handler middleware
+app.use((req, res) => {
+    res.status(404).json({ message: 'Route not found' });
 });
 
-
-app.use((req, res)=>{
-    res.status(404).json({ message: 'Route not found' });
-})
-
-
-
+// Cluster setup
 if (cluster.isPrimary) {
    cluster.fork();
    cluster.fork();
